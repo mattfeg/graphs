@@ -41,3 +41,34 @@ class DiGraph:
     
     def showEdges(self):
         return print([edge.name for edge in self.edges])
+
+class Graph:
+    def __init__(self) -> None:
+        self.nodes = []
+        self.edges = []
+    
+    def addNode(self, name):
+        node = Node(name)
+        self.nodes.append(node)
+
+    def removeNode(self, name):
+        for node in self.nodes:
+            if node.name == name:
+                self.nodes.remove(node)
+    
+    def addEdge(self, nodeSource, nodeTarget):
+        for node in self.nodes:
+            if node.name == nodeSource:
+                nodeSource = node
+            if node.name == nodeTarget:
+                nodeTarget = node
+        edge = Edge(nodeSource, nodeTarget)
+        nodeSource.edges.append(edge)
+        nodeTarget.edges.append(edge)
+        self.edges.append(edge)
+
+    def showNodes(self):
+        return print([node.name for node in self.nodes])
+    
+    def showEdges(self):
+        return print([edge.name for edge in self.edges])
